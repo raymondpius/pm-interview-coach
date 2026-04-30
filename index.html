@@ -2,978 +2,980 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>PM Interview Coach</title>
 <style>
 :root {
-  --bg0: #07080e;
-  --bg1: #0c0d1a;
-  --bg2: #101228;
-  --bg3: #171934;
-  --border: #1e2148;
-  --border2: #2a2f6a;
-  --purple: #7c5cfc;
-  --purple2: #5b3de0;
-  --pdim: rgba(124,92,252,.1);
-  --txt1: #e6e7f0;
-  --txt2: #9499c0;
-  --txt3: #585c85;
-  --green: #00d68f;
-  --gdim: rgba(0,214,143,.1);
-  --red: #ff4d6a;
-  --rdim: rgba(255,77,106,.1);
-  --amber: #ffb020;
-  --adim: rgba(255,176,32,.1);
-  --blue: #4da6ff;
-  --bdim: rgba(77,166,255,.1);
+  --bg:#f4f6fb;--bg2:#ffffff;--bg3:#f0f2f8;--bg4:#e6e9f4;
+  --text:#1a1d2e;--text2:#4a5068;--text3:#8b92a9;
+  --border:#e2e6ef;--border2:#d0d5e8;
+  --purple:#7c5cfc;--purple2:#6246ea;--purple3:#5035d4;
+  --pl:rgba(124,92,252,.1);--pl2:rgba(124,92,252,.18);
+  --green:#16a34a;--gl:rgba(22,163,74,.1);
+  --amber:#d97706;--al:rgba(217,119,6,.1);
+  --red:#dc2626;--rl:rgba(220,38,38,.1);
+  --blue:#2563eb;--bl:rgba(37,99,235,.1);
+  --shadow:0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);
+  --shadow2:0 4px 16px rgba(0,0,0,.1);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%}
-body{
-  background:var(--bg0);color:var(--txt1);
-  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
-  display:flex;flex-direction:column;height:100vh;overflow:hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;font-size:14px;}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;}
 
-/* ── HEADER ── */
-.hdr{
-  background:linear-gradient(135deg,#0c0d1a,#101228);
-  border-bottom:1px solid var(--border);
-  padding:11px 20px;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-shrink:0;z-index:50;
-}
-.hdr-brand h1{
-  font-size:1.1rem;font-weight:700;
-  background:linear-gradient(90deg,#7c5cfc,#4da6ff);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hdr-brand p{font-size:.6rem;color:var(--txt3);margin-top:2px}
-.hdr-right{display:flex;align-items:center;gap:8px}
-.pill{font-size:.58rem;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid}
-.pill-purple{background:var(--pdim);border-color:rgba(124,92,252,.3);color:var(--purple)}
-.pill-green{background:var(--gdim);border-color:rgba(0,214,143,.3);color:var(--green)}
+/* HEADER */
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:8px 16px;flex-shrink:0;}
+.header-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--purple),var(--purple2));border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;font-weight:800;flex-shrink:0;box-shadow:0 2px 8px rgba(124,92,252,.35);}
+.logo-text h1{font-size:15px;font-weight:800;color:var(--text);letter-spacing:-.3px;}
+.logo-text p{font-size:11px;color:var(--text3);}
+.hcontrols{display:flex;align-items:center;gap:7px;flex:1;flex-wrap:wrap;}
+.api-wrap{position:relative;display:flex;align-items:center;gap:6px;}
+.api-wrap input{width:210px;padding:6px 28px 6px 9px;border:1px solid var(--border);border-radius:7px;font-size:12px;background:var(--bg3);color:var(--text);outline:none;transition:border-color .2s;}
+.api-wrap input:focus{border-color:var(--purple);background:#fff;}
+.eye-btn{position:absolute;right:7px;background:none;border:none;cursor:pointer;color:var(--text3);font-size:13px;padding:0;line-height:1;}
+.api-safe{font-size:10px;color:var(--text3);white-space:nowrap;}
+.api-safe b{color:var(--green);}
+select{padding:6px 9px;border:1px solid var(--border);border-radius:7px;font-size:12px;background:var(--bg3);color:var(--text);cursor:pointer;outline:none;transition:border-color .2s,background .15s;}
+select:hover{background:var(--bg4);}
+select:focus{border-color:var(--purple);}
+.strict-wrap{display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;}
+.strict-wrap span{font-size:11.5px;color:var(--text2);white-space:nowrap;}
+.sw{width:32px;height:17px;background:var(--border2);border-radius:9px;position:relative;transition:background .2s;flex-shrink:0;}
+.sw::after{content:'';position:absolute;width:13px;height:13px;background:#fff;border-radius:50%;top:2px;left:2px;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.sw.on{background:var(--red);}
+.sw.on::after{transform:translateX(15px);}
 
-/* ── API BAR ── */
-.api-bar{
-  background:var(--bg1);border-bottom:1px solid var(--border);
-  padding:7px 20px;display:flex;align-items:center;gap:8px;flex-shrink:0;
-}
-.api-lbl{font-size:.6rem;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
-.api-input{
-  flex:1;max-width:380px;
-  background:var(--bg2);border:1px solid var(--border);border-radius:6px;
-  color:var(--txt1);font-size:.7rem;padding:5px 10px;outline:none;font-family:monospace;
-  transition:border-color .15s;
-}
-.api-input:focus{border-color:var(--purple)}
-.api-save{
-  padding:5px 14px;border-radius:6px;border:1px solid var(--purple);
-  color:var(--purple);background:transparent;font-size:.65rem;font-weight:700;cursor:pointer;transition:all .15s;
-}
-.api-save:hover{background:var(--pdim)}
-.api-st{font-size:.62rem;font-weight:600;display:none}
-.api-st.ok{display:inline;color:var(--green)}
-.api-st.err{display:inline;color:var(--red)}
-.api-note{font-size:.58rem;color:var(--txt3)}
+/* MAIN LAYOUT */
+.main{display:grid;grid-template-columns:232px 1fr 296px;flex:1;min-height:0;overflow:hidden;}
 
-/* ── MODE BAR ── */
-.mode-bar{
-  background:var(--bg1);border-bottom:1px solid var(--border);
-  padding:5px 20px;display:flex;align-items:center;gap:6px;flex-shrink:0;
-}
-.mode-lbl{font-size:.58rem;color:var(--txt3);font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-right:4px}
-.mode-btn{
-  padding:4px 14px;border-radius:20px;border:1px solid var(--border2);
-  background:transparent;color:var(--txt2);font-size:.65rem;font-weight:600;cursor:pointer;transition:all .15s;
-}
-.mode-btn:hover{border-color:var(--purple);color:var(--purple)}
-.mode-btn.active{background:var(--purple);border-color:var(--purple);color:#fff}
+/* SIDEBAR */
+.sidebar{background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;}
+.sb-head{padding:10px 12px 6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--text3);}
+.sb-scroll{flex:1;overflow-y:auto;padding:0 7px 6px;}
+.cat{margin-bottom:2px;}
+.cat-hd{display:flex;align-items:center;justify-content:space-between;padding:6px 9px;border-radius:7px;cursor:pointer;font-size:12px;font-weight:600;color:var(--text2);transition:background .15s;}
+.cat-hd:hover{background:var(--bg3);}
+.cat-hd.open{background:var(--pl);color:var(--purple);}
+.cat-arrow{font-size:9px;transition:transform .2s;}
+.cat-hd.open .cat-arrow{transform:rotate(90deg);}
+.cat-cnt{font-size:10px;font-weight:400;color:var(--text3);margin-left:3px;}
+.cat-qs{display:none;padding:2px 0 3px 8px;}
+.cat-qs.open{display:block;}
+.qbtn{width:100%;text-align:left;padding:5px 8px;border:none;background:none;font-size:11.5px;color:var(--text2);cursor:pointer;border-radius:5px;line-height:1.45;transition:background .12s,color .12s;}
+.qbtn:hover{background:var(--bg3);color:var(--text);}
+.qbtn.active{background:var(--pl);color:var(--purple);font-weight:500;}
+.sb-divider{height:1px;background:var(--border);margin:4px 10px;}
+.sb-tmpl{padding:6px 9px 4px;}
+.sb-tmpl-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:5px;}
+.tmpl-btn{width:100%;text-align:left;padding:5px 8px;border:1px solid var(--border);background:var(--bg3);font-size:11px;color:var(--text2);cursor:pointer;border-radius:5px;margin-bottom:3px;transition:background .12s,border-color .12s;}
+.tmpl-btn:hover{background:var(--pl);border-color:var(--purple);color:var(--purple);}
+.sb-custom{padding:7px 8px 10px;}
+.sb-custom-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:5px;}
+.sb-custom textarea{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:7px;font-size:12px;background:var(--bg3);color:var(--text);outline:none;resize:none;font-family:inherit;transition:border-color .2s;}
+.sb-custom textarea:focus{border-color:var(--purple);background:#fff;}
+.sb-custom button{width:100%;margin-top:5px;padding:7px;background:var(--purple);color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s;}
+.sb-custom button:hover{background:var(--purple2);}
 
-/* ── MAIN LAYOUT ── */
-.main{flex:1;display:grid;grid-template-columns:240px 1fr 280px;overflow:hidden}
+/* CHAT */
+.chat{display:flex;flex-direction:column;min-height:0;background:var(--bg);}
+.chat-bar{padding:9px 14px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.chat-qinfo{flex:1;min-width:0;}
+.q-text{font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.q-meta{font-size:11px;color:var(--text3);margin-top:1px;}
+.mode-pill{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;}
+.mode-pill.practice{background:var(--pl);color:var(--purple);}
+.mode-pill.mock{background:var(--rl);color:var(--red);}
+.mode-pill.builder{background:var(--gl);color:var(--green);}
 
-/* ── SIDEBAR ── */
-.sidebar{background:var(--bg1);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
-.sb-top{padding:10px 12px;border-bottom:1px solid var(--border);flex-shrink:0}
-.new-btn{
-  width:100%;padding:7px;border-radius:7px;border:1px solid var(--purple);
-  background:var(--pdim);color:var(--purple);font-size:.68rem;font-weight:700;
-  cursor:pointer;transition:all .15s;text-transform:uppercase;letter-spacing:.5px;
-}
-.new-btn:hover{background:var(--purple);color:#fff}
-.sb-scroll{flex:1;overflow-y:auto;padding:6px 0}
-.sb-scroll::-webkit-scrollbar{width:3px}
-.sb-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-.cat-hdr{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:6px 12px;cursor:pointer;
-  font-size:.62rem;font-weight:700;color:var(--txt3);
-  text-transform:uppercase;letter-spacing:.8px;user-select:none;transition:color .15s;
-}
-.cat-hdr:hover{color:var(--purple)}
-.cat-arr{font-size:.48rem;transition:transform .2s}
-.cat-arr.open{transform:rotate(90deg)}
-.cat-qs{display:none}
-.cat-qs.open{display:block}
-.q-item{
-  padding:6px 12px 6px 18px;font-size:.65rem;color:var(--txt2);
-  cursor:pointer;transition:all .15s;border-left:2px solid transparent;line-height:1.4;
-}
-.q-item:hover{color:var(--txt1);background:var(--pdim);border-left-color:var(--purple)}
-.q-item.active{color:var(--purple);background:var(--pdim);border-left-color:var(--purple);font-weight:600}
-.sb-bot{padding:10px 12px;border-top:1px solid var(--border);flex-shrink:0}
-.sb-lbl{font-size:.56rem;color:var(--txt3);font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px}
-.custom-ta{
-  width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:6px;
-  color:var(--txt1);font-size:.65rem;padding:6px 8px;resize:none;height:50px;
-  outline:none;font-family:inherit;margin-bottom:5px;transition:border-color .15s;
-}
-.custom-ta:focus{border-color:var(--purple)}
-.custom-btn{
-  width:100%;padding:5px;border-radius:5px;border:1px solid var(--border2);
-  background:transparent;color:var(--txt2);font-size:.62rem;font-weight:600;cursor:pointer;transition:all .15s;
-}
-.custom-btn:hover{border-color:var(--purple);color:var(--purple);background:var(--pdim)}
+.chat-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
+.msg{display:flex;gap:9px;max-width:100%;}
+.msg.user{flex-direction:row-reverse;}
+.avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.msg.ai .avatar{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;}
+.msg.user .avatar{background:var(--bg4);color:var(--text2);border:1px solid var(--border);}
+.bubble{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:10px 13px;font-size:13px;line-height:1.65;color:var(--text);max-width:calc(100% - 80px);box-shadow:var(--shadow);}
+.msg.user .bubble{background:var(--purple);color:#fff;border-color:var(--purple);border-top-right-radius:3px;}
+.msg.ai .bubble{border-top-left-radius:3px;}
+.bubble h3{font-size:13px;font-weight:700;margin:8px 0 3px;}
+.bubble h3:first-child{margin-top:0;}
+.bubble strong{font-weight:700;}
+.bubble em{font-style:italic;}
+.bubble ul,.bubble ol{padding-left:18px;margin:4px 0;}
+.bubble li{margin:2px 0;}
+.bubble hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.s-pill{display:inline-flex;align-items:center;padding:1px 7px;border-radius:10px;font-size:11px;font-weight:700;}
+.s-high{background:var(--gl);color:var(--green);}
+.s-mid{background:var(--al);color:var(--amber);}
+.s-low{background:var(--rl);color:var(--red);}
 
-/* ── CHAT AREA ── */
-.chat-area{display:flex;flex-direction:column;background:var(--bg0);overflow:hidden}
-.chat-hdr{
-  padding:9px 16px;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  flex-shrink:0;background:var(--bg1);min-height:42px;
-}
-.chat-q{font-size:.7rem;font-weight:600;color:var(--txt1);flex:1;margin-right:8px;line-height:1.3}
-.chat-q-ph{color:var(--txt3);font-style:italic;font-weight:400}
-.chat-hdr-btns{display:flex;gap:5px}
-.hdr-btn{
-  padding:3px 9px;border-radius:5px;border:1px solid var(--border2);
-  background:transparent;color:var(--txt3);font-size:.58rem;font-weight:700;cursor:pointer;transition:all .15s;text-transform:uppercase;
-}
-.hdr-btn:hover{border-color:var(--purple);color:var(--purple)}
-.hdr-btn.danger:hover{border-color:var(--red);color:var(--red)}
-.mode-chip{
-  font-size:.56rem;font-weight:700;padding:2px 8px;border-radius:3px;
-  text-transform:uppercase;letter-spacing:.5px;margin-right:6px;white-space:nowrap;border:1px solid;
-}
-.chip-practice{background:var(--bdim);color:var(--blue);border-color:rgba(77,166,255,.3)}
-.chip-mock{background:var(--pdim);color:var(--purple);border-color:rgba(124,92,252,.3)}
-.chip-builder{background:var(--gdim);color:var(--green);border-color:rgba(0,214,143,.3)}
+.typing{display:flex;align-items:center;gap:5px;padding:2px 0;}
+.tdot{width:7px;height:7px;background:var(--purple);border-radius:50%;opacity:.7;animation:tdot .9s ease-in-out infinite;}
+.tdot:nth-child(2){animation-delay:.18s;}
+.tdot:nth-child(3){animation-delay:.36s;}
+@keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.7}30%{transform:translateY(-5px);opacity:1}}
 
-/* ── MESSAGES ── */
-.chat-msgs{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
-.chat-msgs::-webkit-scrollbar{width:4px}
-.chat-msgs::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.welcome{text-align:center;padding:30px 20px;display:flex;flex-direction:column;align-items:center;}
+.welcome-icon{font-size:44px;margin-bottom:14px;}
+.welcome h2{font-size:20px;font-weight:800;margin-bottom:8px;}
+.welcome p{font-size:13px;color:var(--text2);max-width:420px;line-height:1.7;margin-bottom:18px;}
+.welcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:420px;width:100%;}
+.wcard{background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;text-align:left;}
+.wcard-icon{font-size:16px;margin-bottom:3px;}
+.wcard-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.wcard-desc{font-size:11px;color:var(--text3);line-height:1.5;}
 
-.welcome{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  flex:1;padding:40px 20px;text-align:center;
-}
-.welcome-ico{font-size:2.2rem;margin-bottom:10px;opacity:.35}
-.welcome h2{font-size:.85rem;font-weight:700;color:var(--txt2);margin-bottom:6px}
-.welcome p{font-size:.68rem;line-height:1.7;color:var(--txt3);max-width:340px}
+.ba-card{border:1px solid var(--border);border-radius:9px;overflow:hidden;margin-top:8px;}
+.ba-tabs{display:flex;border-bottom:1px solid var(--border);}
+.ba-tab{flex:1;padding:7px;text-align:center;font-size:11.5px;font-weight:600;cursor:pointer;background:var(--bg3);color:var(--text3);transition:background .15s,color .15s;}
+.ba-tab.active{background:var(--bg2);color:var(--text);}
+.ba-content{padding:11px 13px;font-size:12.5px;line-height:1.7;color:var(--text);}
+.ba-content.hidden{display:none;}
 
-.msg{display:flex;gap:9px;max-width:92%;animation:msgIn .2s ease}
-@keyframes msgIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-.msg.user{align-self:flex-end;flex-direction:row-reverse}
-.msg.ai{align-self:flex-start}
-.msg.sys{align-self:center;max-width:80%}
+.why-list{margin-top:9px;border-top:1px solid var(--border);padding-top:8px;}
+.why-row{display:flex;gap:7px;align-items:flex-start;padding:3px 0;font-size:12px;color:var(--text2);}
+.why-check{color:var(--green);font-size:13px;flex-shrink:0;margin-top:1px;}
 
-.msg-av{
-  width:26px;height:26px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.58rem;font-weight:700;flex-shrink:0;margin-top:2px;
-}
-.msg.user .msg-av{background:linear-gradient(135deg,#5b3de0,#7c5cfc);color:#fff}
-.msg.ai .msg-av{background:linear-gradient(135deg,#1e2148,#2a2f6a);color:var(--purple);border:1px solid var(--border2)}
+.sec-coach{margin-top:9px;border-top:1px solid var(--border);padding-top:8px;}
+.sec-row{display:flex;gap:8px;align-items:flex-start;margin-bottom:5px;padding:6px 8px;border-radius:6px;background:var(--bg3);}
+.sec-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--purple);min-width:76px;flex-shrink:0;padding-top:2px;}
+.sec-txt{font-size:12px;color:var(--text);line-height:1.6;flex:1;}
+.sec-regen{font-size:10px;color:var(--purple);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;margin-top:3px;display:block;}
 
-.msg-body{flex:1;min-width:0}
-.bubble{
-  border-radius:12px;padding:9px 13px;font-size:.7rem;line-height:1.65;position:relative;
-}
-.msg.user .bubble{
-  background:linear-gradient(135deg,#2a2f6a,#1e2148);
-  border:1px solid var(--border2);border-top-right-radius:4px;
-}
-.msg.ai .bubble{
-  background:var(--bg2);border:1px solid var(--border);border-top-left-radius:4px;
-}
-.msg.sys .bubble{
-  background:var(--rdim);border:1px solid var(--red);color:var(--red);
-  border-radius:8px;font-size:.66rem;text-align:center;
-}
-.msg-ts{font-size:.53rem;color:var(--txt3);margin-top:3px;padding:0 2px}
-.msg.user .msg-ts{text-align:right}
+.abstract-warn{background:var(--al);border:1px solid rgba(217,119,6,.25);border-radius:7px;padding:8px 11px;font-size:12px;color:var(--amber);margin-top:6px;display:flex;gap:7px;align-items:flex-start;line-height:1.5;}
+.aw-icon{font-size:14px;flex-shrink:0;}
 
-.copy-btn{
-  position:absolute;top:5px;right:5px;
-  background:var(--bg3);border:1px solid var(--border);border-radius:4px;
-  color:var(--txt3);font-size:.52rem;padding:2px 6px;cursor:pointer;
-  opacity:0;transition:opacity .15s;
-}
-.bubble:hover .copy-btn{opacity:1}
-.copy-btn:hover{color:var(--purple);border-color:var(--purple)}
+/* INPUT AREA */
+.input-area{padding:9px 13px;background:var(--bg2);border-top:1px solid var(--border);flex-shrink:0;}
+.struct-hint{background:var(--pl);border-radius:6px;padding:6px 10px;margin-bottom:7px;font-size:11.5px;color:var(--purple);display:none;line-height:1.5;}
+.struct-hint.show{display:block;}
+.input-row{display:flex;gap:7px;align-items:flex-end;}
+.ans-box{flex:1;border:1px solid var(--border);border-radius:8px;padding:9px 11px;font-size:13px;font-family:inherit;resize:none;outline:none;background:var(--bg3);color:var(--text);transition:border-color .2s;min-height:50px;max-height:130px;line-height:1.5;}
+.ans-box:focus{border-color:var(--purple);background:#fff;}
+.ans-box::placeholder{color:var(--text3);}
+.btn-col{display:flex;flex-direction:column;gap:4px;}
+.btn-send{padding:9px 14px;background:var(--purple);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s;white-space:nowrap;}
+.btn-send:hover{background:var(--purple2);}
+.btn-send:disabled{opacity:.45;cursor:not-allowed;}
+.btn-improve{padding:6px 10px;background:var(--bg3);color:var(--text2);border:1px solid var(--border);border-radius:6px;font-size:11px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.btn-improve:hover{background:var(--pl);color:var(--purple);border-color:var(--purple);}
+.btn-improve:disabled{opacity:.4;cursor:not-allowed;}
+.btn-clear{padding:6px 10px;background:var(--bg3);color:var(--text3);border:1px solid var(--border);border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s;white-space:nowrap;}
+.btn-clear:hover{background:var(--rl);color:var(--red);border-color:var(--red);}
 
-/* Bubble markdown */
-.bubble h3{font-size:.73rem;color:var(--purple);margin:8px 0 3px;font-weight:700}
-.bubble h4{font-size:.7rem;color:var(--blue);margin:6px 0 2px;font-weight:700}
-.bubble strong{color:var(--txt1);font-weight:700}
-.bubble em{color:var(--txt2);font-style:italic}
-.bubble ul{padding-left:14px;margin:3px 0}
-.bubble li{margin:2px 0}
-.bubble p{margin:3px 0}
-.bubble p:first-child{margin-top:0}
-.bubble p:last-child{margin-bottom:0}
+/* RIGHT PANEL */
+.rpanel{background:var(--bg2);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;}
+.rp-scroll{flex:1;overflow-y:auto;padding:11px;}
+.rp-sec{margin-bottom:14px;}
+.rp-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--text3);margin-bottom:8px;}
+.sc-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 11px;margin-bottom:5px;}
+.sc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.sc-name{font-size:12px;font-weight:700;color:var(--text);}
+.sc-num{font-size:17px;font-weight:800;}
+.sc-track{height:4px;background:var(--bg4);border-radius:3px;overflow:hidden;}
+.sc-fill{height:100%;border-radius:3px;transition:width .75s cubic-bezier(.34,1.56,.64,1);}
+.sc-expl{font-size:11px;color:var(--text3);margin-top:5px;line-height:1.45;}
+.overall-box{background:var(--pl);border:1px solid var(--pl2);border-radius:8px;padding:10px;text-align:center;margin-bottom:6px;}
+.overall-lbl{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.07em;font-weight:600;}
+.overall-num{font-size:30px;font-weight:900;color:var(--purple);line-height:1.1;}
+.overall-num sup{font-size:14px;font-weight:500;color:var(--text3);}
+.mistake-item{display:flex;gap:6px;align-items:flex-start;padding:6px 8px;background:var(--rl);border-radius:5px;font-size:11.5px;color:var(--red);margin-bottom:4px;line-height:1.4;}
+.mi-icon{flex-shrink:0;font-size:12px;margin-top:1px;}
+.fq-item{padding:7px 9px;background:var(--bl);border-radius:6px;font-size:11.5px;color:var(--blue);border-left:2px solid var(--blue);cursor:pointer;margin-bottom:4px;line-height:1.45;transition:background .15s;}
+.fq-item:hover{background:rgba(37,99,235,.15);}
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-top:1px solid var(--border);font-size:12px;}
+.stat-row:first-child{border-top:none;}
+.stat-lbl{color:var(--text2);}
+.stat-val{font-weight:700;color:var(--text);}
+.trend-up{color:var(--green);}
+.trend-dn{color:var(--red);}
+.ins-card{padding:8px 10px;border-radius:6px;font-size:11.5px;margin-bottom:5px;line-height:1.4;}
+.ins-strong{background:var(--gl);color:var(--green);}
+.ins-improve{background:var(--al);color:var(--amber);}
+.ins-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;opacity:.8;}
+.empty{text-align:center;padding:18px 10px;color:var(--text3);}
+.empty-icon{font-size:22px;margin-bottom:5px;}
+.empty p{font-size:11.5px;line-height:1.5;}
 
-/* Typing indicator */
-.typing-wrap{display:flex;gap:9px;align-self:flex-start}
-.typing-bubble{
-  background:var(--bg2);border:1px solid var(--border);border-radius:12px;border-top-left-radius:4px;
-  padding:8px 14px;display:flex;align-items:center;gap:4px;
-}
-.t-dot{
-  width:6px;height:6px;background:var(--purple);border-radius:50%;
-  animation:tdot .8s infinite;
-}
-.t-dot:nth-child(2){animation-delay:.15s}
-.t-dot:nth-child(3){animation-delay:.3s}
-@keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-5px);opacity:1}}
+/* TEMPLATE MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:flex;align-items:center;justify-content:center;}
+.modal-overlay.hidden{display:none;}
+.modal{background:var(--bg2);border-radius:12px;padding:20px;max-width:560px;width:90%;max-height:82vh;overflow-y:auto;box-shadow:var(--shadow2);}
+.modal-title{font-size:15px;font-weight:800;margin-bottom:4px;}
+.modal-sub{font-size:12px;color:var(--text3);margin-bottom:14px;}
+.modal-close{float:right;background:none;border:none;cursor:pointer;font-size:18px;color:var(--text3);margin-top:-4px;line-height:1;}
+.tmpl-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:10px;}
+.tmpl-name{font-size:13px;font-weight:700;margin-bottom:6px;color:var(--text);}
+.tmpl-steps{list-style:none;padding:0;}
+.tmpl-step{display:flex;gap:8px;align-items:flex-start;padding:4px 0;font-size:12.5px;color:var(--text2);line-height:1.5;}
+.tmpl-step-num{min-width:20px;height:20px;background:var(--pl);color:var(--purple);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;margin-top:1px;}
+.tmpl-use-btn{margin-top:9px;padding:7px 14px;background:var(--purple);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s;}
+.tmpl-use-btn:hover{background:var(--purple2);}
 
-/* ── INPUT AREA ── */
-.input-area{
-  padding:10px 16px;border-top:1px solid var(--border);
-  background:var(--bg1);flex-shrink:0;
-}
-.input-row{display:flex;gap:8px;align-items:flex-end}
-.chat-ta{
-  flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:8px;
-  color:var(--txt1);font-size:.7rem;font-family:inherit;padding:8px 12px;
-  resize:none;height:66px;outline:none;line-height:1.55;transition:border-color .15s;
-}
-.chat-ta:focus{border-color:var(--purple)}
-.chat-ta::placeholder{color:var(--txt3)}
-.send-btn{
-  padding:0 18px;border-radius:8px;border:none;
-  background:var(--purple);color:#fff;font-size:.68rem;font-weight:700;
-  cursor:pointer;transition:all .15s;text-transform:uppercase;letter-spacing:.5px;
-  white-space:nowrap;height:66px;flex-shrink:0;
-}
-.send-btn:hover{background:var(--purple2);filter:brightness(1.1)}
-.send-btn:disabled{opacity:.45;cursor:not-allowed}
-.input-foot{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
-.input-hint{font-size:.55rem;color:var(--txt3)}
-.end-btn{
-  padding:3px 10px;border-radius:5px;border:1px solid var(--red);
-  background:transparent;color:var(--red);font-size:.58rem;font-weight:700;
-  cursor:pointer;display:none;transition:all .15s;
-}
-.end-btn:hover{background:var(--rdim)}
-.end-btn.show{display:inline-block}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(12px);background:var(--text);color:#fff;padding:8px 16px;border-radius:8px;font-size:12.5px;opacity:0;transition:all .28s;z-index:300;pointer-events:none;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-/* ── COACHING PANEL ── */
-.cp{background:var(--bg1);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
-.cp-hdr{
-  padding:9px 14px;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
-}
-.cp-title{font-size:.62rem;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:1px}
-.cp-round{font-size:.55rem;color:var(--txt3)}
-.cp-body{flex:1;overflow-y:auto;padding:11px;display:flex;flex-direction:column;gap:9px}
-.cp-body::-webkit-scrollbar{width:3px}
-.cp-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-
-/* Score bars */
-.score-lbl-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
-.score-name{font-size:.58rem;font-weight:700;color:var(--txt2);text-transform:uppercase;letter-spacing:.5px}
-.score-val{font-size:.7rem;font-weight:700}
-.bar-bg{height:5px;background:var(--bg0);border-radius:3px;overflow:hidden;margin-bottom:7px}
-.bar-fill{height:100%;border-radius:3px;transition:width .8s cubic-bezier(.34,1.56,.64,1);width:0%}
-
-/* Coaching cards */
-.cp-card{border-radius:7px;padding:8px 10px;border-left:3px solid}
-.cp-card .cc-lbl{font-size:.54rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px}
-.cp-card .cc-txt{font-size:.65rem;color:var(--txt2);line-height:1.5}
-.cc-empty{background:var(--bg2);border-color:var(--border)}
-.cc-empty .cc-lbl{color:var(--txt3)}
-.cc-empty .cc-txt{color:var(--txt3);font-style:italic}
-.cc-strength{background:var(--gdim);border-color:var(--green)}
-.cc-strength .cc-lbl{color:var(--green)}
-.cc-improve{background:var(--adim);border-color:var(--amber)}
-.cc-improve .cc-lbl{color:var(--amber)}
-.cc-followup{background:var(--bdim);border-color:var(--blue)}
-.cc-followup .cc-lbl{color:var(--blue)}
-
-/* Session notes */
-.notes-lbl{font-size:.56rem;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
-.notes-ta{
-  width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:6px;
-  color:var(--txt1);font-size:.65rem;font-family:inherit;padding:6px 9px;
-  resize:none;height:78px;outline:none;transition:border-color .15s;
-}
-.notes-ta:focus{border-color:var(--purple)}
-.cp-btns{display:flex;gap:5px;margin-top:5px}
-.cp-btn{
-  flex:1;padding:5px;border-radius:5px;border:1px solid var(--border2);
-  background:transparent;color:var(--txt2);font-size:.58rem;font-weight:700;cursor:pointer;transition:all .15s;text-transform:uppercase;
-}
-.cp-btn:hover{border-color:var(--purple);color:var(--purple);background:var(--pdim)}
-
-/* ── FOOTER ── */
-.footer{
-  text-align:center;padding:5px;font-size:.58rem;color:var(--txt3);
-  border-top:1px solid var(--border);flex-shrink:0;background:var(--bg1);
-}
-.footer span{color:var(--purple);font-weight:600}
-
-@media(max-width:1100px){.main{grid-template-columns:200px 1fr 250px}}
-@media(max-width:800px){.main{grid-template-columns:1fr}.sidebar,.cp{display:none}}
+footer{text-align:center;padding:5px;font-size:11px;color:var(--text3);background:var(--bg2);border-top:1px solid var(--border);flex-shrink:0;}
+footer b{color:var(--purple);}
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<header class="hdr">
-  <div class="hdr-brand">
-    <h1>PM Interview Coach</h1>
-    <p>AI-powered coaching for Senior PM and TPM interviews</p>
+<div class="header">
+  <div class="header-top">
+    <div class="logo">
+      <div class="logo-icon">P</div>
+      <div class="logo-text">
+        <h1>PM Interview Coach</h1>
+        <p>AI-Powered Coaching for Senior PM and TPM Interviews</p>
+      </div>
+    </div>
+    <div class="hcontrols">
+      <div class="api-wrap">
+        <input type="password" id="apiKey" placeholder="Enter Claude API key…" autocomplete="off">
+        <button class="eye-btn" onclick="toggleEye()" title="Show/hide key">&#128065;</button>
+      </div>
+      <span class="api-safe">&#128274; <b>Memory only.</b> Never stored.</span>
+      <select id="modeSelect" onchange="setMode(this.value)" title="Coaching mode">
+        <option value="practice">Practice Mode</option>
+        <option value="mock">Mock Interview</option>
+        <option value="builder">Answer Builder</option>
+      </select>
+      <select id="roleSelect" onchange="G.role=this.value" title="Target role">
+        <option value="sr-pm">Senior PM</option>
+        <option value="pm">PM</option>
+        <option value="tpm">TPM</option>
+        <option value="ai-pm">AI PM</option>
+      </select>
+      <select id="companySelect" onchange="G.company=this.value" title="Company style">
+        <option value="none">Any Company</option>
+        <option value="amazon">Amazon</option>
+        <option value="google">Google</option>
+        <option value="meta">Meta</option>
+      </select>
+      <label class="strict-wrap" title="Brutal, no-sugar-coating feedback">
+        <div class="sw" id="strictSw" onclick="toggleStrict()"></div>
+        <span>Strict Mode</span>
+      </label>
+    </div>
   </div>
-  <div class="hdr-right">
-    <span class="pill pill-purple">claude-sonnet-4</span>
-    <span class="pill pill-green">Raymond Pius</span>
-  </div>
-</header>
-
-<!-- API KEY BAR -->
-<div class="api-bar">
-  <span class="api-lbl">&#128273; API Key</span>
-  <input class="api-input" type="password" id="apiKeyInput" placeholder="sk-ant-api03-..." autocomplete="off" spellcheck="false"/>
-  <button class="api-save" onclick="saveKey()">Save Key</button>
-  <span class="api-st" id="apiSt"></span>
-  <span class="api-note">Stored in memory only — never persisted or shared</span>
 </div>
 
-<!-- MODE BAR -->
-<div class="mode-bar">
-  <span class="mode-lbl">Mode:</span>
-  <button class="mode-btn active" id="btn-practice" onclick="setMode('practice')">&#127919; Practice</button>
-  <button class="mode-btn" id="btn-mock" onclick="setMode('mock')">&#127981; Mock Interview</button>
-  <button class="mode-btn" id="btn-builder" onclick="setMode('builder')">&#9997; Answer Builder</button>
-</div>
-
-<!-- MAIN LAYOUT -->
+<!-- MAIN -->
 <div class="main">
 
   <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sb-top">
-      <button class="new-btn" onclick="newSession()">&#43; New Session</button>
+  <div class="sidebar">
+    <div class="sb-head">Question Bank</div>
+    <div class="sb-scroll" id="sbScroll"></div>
+    <div class="sb-divider"></div>
+    <div class="sb-tmpl">
+      <div class="sb-tmpl-title">Answer Templates</div>
+      <button class="tmpl-btn" onclick="showTemplate('behavioral')">&#127775; STAR Behavioral</button>
+      <button class="tmpl-btn" onclick="showTemplate('strategy')">&#128200; Product Strategy</button>
+      <button class="tmpl-btn" onclick="showTemplate('metrics')">&#128202; Metrics Deep-Dive</button>
+      <button class="tmpl-btn" onclick="showTemplate('ai-ml')">&#129302; AI/ML Product</button>
+      <button class="tmpl-btn" onclick="showTemplate('tpm')">&#128295; TPM Program</button>
     </div>
-    <div class="sb-scroll" id="questionBank"></div>
-    <div class="sb-bot">
-      <div class="sb-lbl">Custom Question</div>
-      <textarea class="custom-ta" id="customQ" placeholder="Type your own question..."></textarea>
-      <button class="custom-btn" onclick="useCustomQ()">&#9654; Use This Question</button>
+    <div class="sb-divider"></div>
+    <div class="sb-custom">
+      <div class="sb-custom-label">Custom Question</div>
+      <textarea id="customQ" rows="2" placeholder="Type any PM question…"></textarea>
+      <button onclick="loadCustomQ()">Ask This Question</button>
     </div>
-  </aside>
+  </div>
 
   <!-- CHAT -->
-  <main class="chat-area">
-    <div class="chat-hdr">
-      <div style="display:flex;align-items:center;flex:1;min-width:0">
-        <span class="mode-chip chip-practice" id="modeChip">PRACTICE</span>
-        <div class="chat-q" id="chatQ"><span class="chat-q-ph">Select a question from the sidebar to begin</span></div>
+  <div class="chat">
+    <div class="chat-bar">
+      <div class="chat-qinfo">
+        <div class="q-text" id="qTitle">Welcome — Select a question to begin</div>
+        <div class="q-meta" id="qMeta">Choose from the sidebar or type a custom question</div>
       </div>
-      <div class="chat-hdr-btns">
-        <button class="hdr-btn danger" onclick="clearChat()">Clear</button>
-        <button class="hdr-btn" onclick="saveSession()">Save</button>
-      </div>
+      <div class="mode-pill practice" id="modePill">Practice</div>
     </div>
     <div class="chat-msgs" id="chatMsgs">
-      <div class="welcome" id="welcomeEl">
-        <div class="welcome-ico">&#127919;</div>
+      <div class="welcome">
+        <div class="welcome-icon">&#127775;</div>
         <h2>Ready to ace your PM interview?</h2>
-        <p>Save your Anthropic API key above, choose a coaching mode, then select a question from the sidebar or type your own. Every response is generated live by Claude AI.</p>
+        <p>Select a question from the sidebar, choose your coaching mode, and get real-time AI evaluation, ideal answers, and targeted coaching.</p>
+        <div class="welcome-grid">
+          <div class="wcard"><div class="wcard-icon">&#127218;</div><div class="wcard-title">Practice Mode</div><div class="wcard-desc">Structured feedback + ideal answer + gap analysis</div></div>
+          <div class="wcard"><div class="wcard-icon">&#127919;</div><div class="wcard-title">Mock Interview</div><div class="wcard-desc">Tough interviewer probes your weak points hard</div></div>
+          <div class="wcard"><div class="wcard-icon">&#9997;</div><div class="wcard-title">Answer Builder</div><div class="wcard-desc">Paste rough notes &rarr; polished STAR answer</div></div>
+          <div class="wcard"><div class="wcard-icon">&#128293;</div><div class="wcard-title">Strict Mode</div><div class="wcard-desc">Brutal honest feedback — no sugar coating</div></div>
+        </div>
       </div>
     </div>
     <div class="input-area">
+      <div class="struct-hint" id="structHint"></div>
       <div class="input-row">
-        <textarea class="chat-ta" id="chatInput" placeholder="Type your answer here..." onkeydown="handleKey(event)"></textarea>
-        <button class="send-btn" id="sendBtn" onclick="sendMsg()">Send</button>
-      </div>
-      <div class="input-foot">
-        <span class="input-hint">Enter to send &nbsp;&middot;&nbsp; Shift+Enter for new line</span>
-        <button class="end-btn" id="endBtn" onclick="endInterview()">End Interview &amp; Score</button>
-      </div>
-    </div>
-  </main>
-
-  <!-- COACHING PANEL -->
-  <aside class="cp">
-    <div class="cp-hdr">
-      <span class="cp-title">Coaching Panel</span>
-      <span class="cp-round" id="cpRound"></span>
-    </div>
-    <div class="cp-body">
-
-      <!-- Score bars -->
-      <div>
-        <div class="score-lbl-row"><span class="score-name">Clarity</span><span class="score-val" id="sv-clarity" style="color:var(--txt3)">—</span></div>
-        <div class="bar-bg"><div class="bar-fill" id="bf-clarity" style="background:var(--purple)"></div></div>
-        <div class="score-lbl-row"><span class="score-name">Impact</span><span class="score-val" id="sv-impact" style="color:var(--txt3)">—</span></div>
-        <div class="bar-bg"><div class="bar-fill" id="bf-impact" style="background:var(--blue)"></div></div>
-        <div class="score-lbl-row"><span class="score-name">Specificity</span><span class="score-val" id="sv-specificity" style="color:var(--txt3)">—</span></div>
-        <div class="bar-bg"><div class="bar-fill" id="bf-specificity" style="background:var(--green)"></div></div>
-      </div>
-
-      <!-- Feedback cards -->
-      <div class="cp-card cc-empty" id="cc-strength">
-        <div class="cc-lbl">What Worked</div>
-        <div class="cc-txt">Feedback appears after your first answer.</div>
-      </div>
-      <div class="cp-card cc-empty" id="cc-improve">
-        <div class="cc-lbl">Improve</div>
-        <div class="cc-txt">Areas to strengthen appear here.</div>
-      </div>
-      <div class="cp-card cc-empty" id="cc-followup">
-        <div class="cc-lbl">Likely Follow-up</div>
-        <div class="cc-txt">Anticipated next question appears here.</div>
-      </div>
-
-      <!-- Session notes -->
-      <div>
-        <div class="notes-lbl">Session Notes</div>
-        <textarea class="notes-ta" id="sessionNotes" placeholder="Jot down key takeaways..."></textarea>
-        <div class="cp-btns">
-          <button class="cp-btn" onclick="copyNotes()">Copy Notes</button>
-          <button class="cp-btn" onclick="saveSession()">Save Session</button>
+        <textarea class="ans-box" id="ansBox" placeholder="Type your answer here… (Enter to send, Shift+Enter for new line)" rows="2"
+          onkeydown="onKey(event)" oninput="autoH(this)"></textarea>
+        <div class="btn-col">
+          <button class="btn-send" id="sendBtn" onclick="submitAnswer()">Send &#9654;</button>
+          <button class="btn-improve" id="improveBtn" onclick="improveAnswer()">&#9889; Improve</button>
+          <button class="btn-clear" onclick="clearChat()">&#10006; Clear</button>
         </div>
       </div>
-
     </div>
-  </aside>
+  </div>
 
+  <!-- RIGHT PANEL -->
+  <div class="rpanel">
+    <div class="rp-scroll">
+      <div class="rp-sec">
+        <div class="rp-title">&#128202; Evaluation Scores</div>
+        <div id="scoreArea">
+          <div class="empty"><div class="empty-icon">&#128202;</div><p>Submit an answer to see your evaluation scores</p></div>
+        </div>
+      </div>
+      <div class="rp-sec" id="rp-mistakes" style="display:none">
+        <div class="rp-title">&#9888;&#65039; Common Mistakes Found</div>
+        <div id="mistakesArea"></div>
+      </div>
+      <div class="rp-sec" id="rp-followups" style="display:none">
+        <div class="rp-title">&#128161; Likely Follow-up Questions</div>
+        <div id="followupsArea"></div>
+      </div>
+      <div class="rp-sec">
+        <div class="rp-title">&#128200; Session Stats</div>
+        <div class="stat-row"><span class="stat-lbl">Questions Attempted</span><span class="stat-val" id="ss-attempts">0</span></div>
+        <div class="stat-row"><span class="stat-lbl">Avg Clarity</span><span class="stat-val" id="ss-clarity">—</span></div>
+        <div class="stat-row"><span class="stat-lbl">Avg Impact</span><span class="stat-val" id="ss-impact">—</span></div>
+        <div class="stat-row"><span class="stat-lbl">Avg Specificity</span><span class="stat-val" id="ss-spec">—</span></div>
+        <div class="stat-row"><span class="stat-lbl">Avg Overall</span><span class="stat-val" id="ss-overall">—</span></div>
+        <div class="stat-row"><span class="stat-lbl">Trend</span><span class="stat-val" id="ss-trend">—</span></div>
+      </div>
+      <div class="rp-sec" id="rp-insights" style="display:none">
+        <div class="rp-title">&#127775; Confidence Insights</div>
+        <div id="insightsArea"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="footer">Built by <span>Raymond Pius</span> &nbsp;|&nbsp; PM Interview Coach &nbsp;|&nbsp; Powered by Claude AI</div>
+<footer>Built by <b>Raymond Pius</b> &nbsp;|&nbsp; PM Interview Coach &nbsp;|&nbsp; Powered by Claude AI</footer>
+
+<!-- TEMPLATE MODAL -->
+<div class="modal-overlay hidden" id="tmplModal" onclick="closeModal(event)">
+  <div class="modal" id="tmplContent"></div>
+</div>
+
+<div class="toast" id="toast"></div>
 
 <script>
-'use strict';
-
-// ── CONFIG ──
-const API_URL = 'https://api.anthropic.com/v1/messages';
-const MODEL   = 'claude-sonnet-4-20250514';
-const MAX_CTX = 30;
-
-// ── STATE ──
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
 const G = {
-  apiKey:  '',
-  mode:    'practice',
-  msgs:    [],
-  question:'',
-  loading: false,
-  round:   0,
+  mode:'practice', role:'sr-pm', company:'none', strict:false,
+  msgs:[], question:'', qtype:'', loading:false, lastAnswer:'', baCounter:0,
+  session:{ n:0, clarity:[], impact:[], spec:[], overall:[] },
 };
+const API = 'https://api.anthropic.com/v1/messages';
+const MDL = 'claude-sonnet-4-20250514';
 
-// ── QUESTION BANK ──
+// ═══════════════════════════════════════════════
+// QUESTION BANK
+// ═══════════════════════════════════════════════
 const QB = {
-  'Product Strategy': [
-    'How would you prioritize a product roadmap with limited engineering resources?',
-    'How would you improve Google Maps for professional users?',
-    'You are the new PM for LinkedIn. What is the next big feature you ship?',
-    'How do you decide when to build vs buy vs partner?',
-    'Walk me through how you would enter a new market with an existing product.',
-    'A competitor just launched a feature your users are asking for. What do you do?',
+  'Product Strategy':[
+    {q:"How would you define the product vision for an AI-powered enterprise product?",t:"strategy"},
+    {q:"How do you prioritize features when resources are limited?",t:"strategy"},
+    {q:"A competitor just launched the feature you were planning. What do you do?",t:"strategy"},
+    {q:"How would you build a product roadmap for a new ML platform?",t:"strategy"},
+    {q:"How do you decide what to build vs buy vs partner?",t:"strategy"},
+    {q:"Walk me through how you would sunset a declining product.",t:"strategy"},
+    {q:"How do you identify the next big opportunity in your product space?",t:"strategy"},
   ],
-  'Behavioral': [
-    'Tell me about a time you influenced without authority.',
-    'Describe a time you made a high-stakes decision with incomplete data.',
-    'Tell me about a product you launched that failed. What did you learn?',
-    'Describe a time you disagreed with your manager. What happened?',
-    'Tell me about a time you had to say no to an important stakeholder.',
-    'What is the most complex product problem you have ever solved?',
+  'Behavioral':[
+    {q:"Tell me about a time you influenced without authority.",t:"behavioral"},
+    {q:"Describe a time you made a data-driven product decision.",t:"behavioral"},
+    {q:"Tell me about your biggest product failure and what you learned.",t:"behavioral"},
+    {q:"Describe a time you managed conflicting stakeholder priorities.",t:"behavioral"},
+    {q:"Tell me about a time you simplified complexity for non-technical stakeholders.",t:"behavioral"},
+    {q:"Describe when you pushed back on leadership and were right.",t:"behavioral"},
+    {q:"Tell me about a decision you made with incomplete data.",t:"behavioral"},
   ],
-  'AI / ML Product': [
-    'How do you manage model drift in a production ML system?',
-    'How do you prioritize ML features on a product roadmap?',
-    'How would you define success metrics for an AI recommendation engine?',
-    'Walk me through how you would launch an ML-powered product from 0 to 1.',
-    'How do you explain model limitations and trade-offs to non-technical executives?',
-    'How do you balance model accuracy vs latency in a customer-facing product?',
+  'AI/ML Product':[
+    {q:"How do you define success metrics for an ML model in production?",t:"ai-ml"},
+    {q:"How would you handle model drift in a production system?",t:"ai-ml"},
+    {q:"How do you build trust with users of an AI product?",t:"ai-ml"},
+    {q:"Walk me through how you evaluate a new ML use case.",t:"ai-ml"},
+    {q:"How do you balance model accuracy vs latency in a consumer product?",t:"ai-ml"},
+    {q:"How would you approach responsible AI and bias mitigation?",t:"ai-ml"},
+    {q:"How do you explain ML limitations to business stakeholders?",t:"ai-ml"},
   ],
-  'Metrics & Data': [
-    'How do you define success for a new product launch?',
-    'Walk me through your metrics framework for a consumer product.',
-    'How do you distinguish a metric drop caused by a bug vs a real trend?',
-    'How would you measure the impact of a feature with no direct revenue?',
-    'Tell me about a time data directly changed your product direction.',
-    'How do you set OKRs for a product team?',
+  'Metrics & Data':[
+    {q:"Your DAU dropped 20% overnight. Walk me through your investigation.",t:"metrics"},
+    {q:"How do you define and measure product-market fit?",t:"metrics"},
+    {q:"What metrics would you use to measure a recommendation system?",t:"metrics"},
+    {q:"How do you decide which metric to optimize when they conflict?",t:"metrics"},
+    {q:"How would you set up an A/B test for a new feature?",t:"metrics"},
+    {q:"What is the difference between a leading and lagging indicator?",t:"metrics"},
+    {q:"How would you measure the ROI of an AI feature?",t:"metrics"},
   ],
-  'Leadership': [
-    'How do you align stakeholders with competing priorities?',
-    'Tell me about the most difficult trade-off decision you have made as a PM.',
-    'How do you build trust and credibility with engineering teams?',
-    'Tell me about a time you led a cross-functional team through high ambiguity.',
-    'How do you give critical feedback to a peer or a report?',
-    'How do you manage up when your exec disagrees with your roadmap?',
+  'Leadership':[
+    {q:"How do you build alignment across engineering, design, and data science?",t:"leadership"},
+    {q:"Describe how you manage a team through ambiguity.",t:"leadership"},
+    {q:"How do you develop and mentor junior PMs?",t:"leadership"},
+    {q:"Describe your approach to executive-level stakeholder management.",t:"leadership"},
+    {q:"How do you handle persistent disagreement with your engineering lead?",t:"leadership"},
+    {q:"Tell me about a difficult trade-off you made under pressure.",t:"leadership"},
   ],
-  'TPM Specific': [
-    'How do you manage technical trade-offs between speed and quality?',
-    'How do you handle scope creep mid-project without derailing delivery?',
-    'How do you communicate technical risk and escalation paths to executives?',
-    'Walk me through how you run an effective sprint planning and review cycle.',
-    'How do you ensure alignment between product, engineering, and design at scale?',
-    'How do you handle a situation where engineering says something is not technically feasible?',
+  'TPM Specific':[
+    {q:"How do you manage technical risk in a large cross-functional program?",t:"tpm"},
+    {q:"Walk me through how you would run a program kickoff.",t:"tpm"},
+    {q:"How do you track and communicate program health to leadership?",t:"tpm"},
+    {q:"Describe how you handle scope creep in a large program.",t:"tpm"},
+    {q:"How do you coordinate dependencies across multiple engineering teams?",t:"tpm"},
+    {q:"How do you balance technical debt against feature delivery?",t:"tpm"},
+    {q:"How do you run a post-mortem that actually creates change?",t:"tpm"},
   ],
 };
 
-// ── SYSTEM PROMPTS ──
-const BASE_PROMPT = `You are a world-class PM interview coach specializing in Senior PM and TPM roles at top tech companies. You coach Raymond Pius — a Senior Technical PM with 9 years experience, previously at Amazon Alexa AI and AWS SageMaker, currently at Verizon leading AI/ML product initiatives. Raymond is targeting Senior PM and Senior TPM roles. His strengths are AI/ML product ownership, data-driven decision making, cross-functional leadership, and enterprise-scale delivery. Always frame answers around product ownership and decision making — never program management coordination. Use STAR format for behavioral questions. Be direct, specific, and push for stronger answers with follow-up questions.`;
-
-const PROMPTS = {
-  practice: `${BASE_PROMPT}
-
-MODE: PRACTICE COACH
-When a question is presented, first ask Raymond 2-3 targeted clarifying questions to understand which experience, company context, and angle he wants to use. After he responds, provide structured coaching:
-
-## Strengths
-(2-3 specific things that worked well — be precise)
-
-## Gaps
-(2-3 specific things missing or weak — be honest and direct)
-
-## Coached STAR Answer
-(A polished, specific, interview-ready answer written in first person as if Raymond is speaking. Make it compelling and quantified.)
-
-Always end your response with this exact block on its own line — it is parsed programmatically and must not appear in conversational text:
-<coaching>{"clarity":N,"impact":N,"specificity":N,"strength":"one sentence on the strongest element","improve":"one sentence on the single biggest gap to fix","followup":"the most likely follow-up question an interviewer would ask next"}</coaching>
-N = integer score 1 to 10.`,
-
-  mock: `${BASE_PROMPT}
-
-MODE: MOCK INTERVIEWER
-You are playing the role of a senior PM hiring manager at a top tech company (Google, Amazon, or Meta). Ask one interview question. Listen carefully to the answer. Respond exactly as a real interviewer would — with brief acknowledgment and a natural follow-up probe or the next question. Do not over-praise. Be appropriately skeptical. Probe for specifics, push back on vague answers.
-
-After 3-5 exchanges OR when the user sends "END INTERVIEW", switch into assessment mode and provide:
-- **Overall Score:** X/10
-- **Top 2 Strengths** (specific)
-- **Top 2 Weaknesses** (specific)
-- **3 Things to Do Before the Real Interview** (actionable)
-
-After each non-assessment response, append this block on its own line:
-<coaching>{"clarity":N,"impact":N,"specificity":N,"strength":"brief positive note on their answer","improve":"one coaching note","followup":"the probe or next question you just asked"}</coaching>`,
-
-  builder: `${BASE_PROMPT}
-
-MODE: ANSWER BUILDER
-The user will paste a rough answer, notes, or bullet points. Transform it into a polished, interview-ready STAR answer.
-
-Structure your response as:
-
-## What You Gave Me
-(Identify the 3-4 strongest raw elements from their input — be affirming but honest)
-
-## What I Strengthened
-(3 specific improvements with brief WHY explanations — be concrete about what changed and why it matters)
-
-## Polished STAR Answer
-(The full improved answer in first person, ready to deliver in a real interview. Should be 3-4 minutes of spoken content when delivered. Quantify everything possible.)
-
-End your response with this block on its own line:
-<coaching>{"clarity":N,"impact":N,"specificity":N,"strength":"what was salvageable and strong in the original","improve":"the biggest single transformation made","followup":"a tough follow-up to stress-test this answer"}</coaching>`,
+// ═══════════════════════════════════════════════
+// STRUCTURE HINTS
+// ═══════════════════════════════════════════════
+const HINT = {
+  behavioral: '<b>STAR:</b> Situation (context, stakes) &rarr; Task (your specific role) &rarr; Action (what <em>you</em> did — use "I") &rarr; Result (quantified outcome + learning)',
+  strategy:   '<b>Framework:</b> Context (market/user) &rarr; Options considered &rarr; Decision & rationale &rarr; Success metrics',
+  metrics:    '<b>Metrics:</b> Hypothesis (possible causes) &rarr; Data investigation &rarr; Root cause &rarr; Action &rarr; Prevention',
+  'ai-ml':    '<b>AI/ML:</b> Problem framing &rarr; Technical approach &rarr; Success metrics &rarr; Tradeoffs &rarr; Real example',
+  leadership: '<b>Leadership:</b> Challenge &rarr; Your approach &rarr; Stakeholders &rarr; Actions &rarr; Measurable outcome',
+  tpm:        '<b>TPM:</b> Program context &rarr; Your role &rarr; Framework &rarr; Cross-team coordination &rarr; Delivery outcome',
 };
 
-// ── HELPERS ──
-function ts() {
-  return new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true});
-}
+// ═══════════════════════════════════════════════
+// ANSWER TEMPLATES
+// ═══════════════════════════════════════════════
+const TEMPLATES = {
+  behavioral:{
+    name:'STAR Behavioral Answer',
+    desc:'Use for: "Tell me about a time…" / "Describe a situation…"',
+    steps:[
+      {n:'Situation',d:'Set context in 2-3 sentences. Business problem, team size, timeline. Be specific — name the product, team, or initiative.'},
+      {n:'Task',d:'What was YOUR specific responsibility? Not the team — you. What were you accountable for delivering?'},
+      {n:'Action',d:'Use "I" not "we". List 3-5 concrete actions. Show decision-making. This should be 60% of your answer.'},
+      {n:'Result',d:'Quantify: revenue impact, time saved, user growth, error rate reduction. Then add what you learned.'},
+      {n:'LP Tie-in (Amazon)',d:'Name the Leadership Principle: "This demonstrated Customer Obsession because…"'},
+    ],
+    example:'"When I was at Amazon Alexa AI, our recommendation model was degrading user engagement by 8%. As the PM owning personalization, I was accountable for recovering this metric within one quarter…"',
+  },
+  strategy:{
+    name:'Product Strategy Framework',
+    desc:'Use for: "How would you…" / "Walk me through…" / strategic decisions',
+    steps:[
+      {n:'Context & Goal',d:'Restate the problem. Clarify assumptions. What does success look like in 12 months?'},
+      {n:'User & Market',d:'Who is the user? What is the market context? Segment if needed. Show customer empathy.'},
+      {n:'Framework',d:'Lay out how you think: 2x2 matrix, prioritization framework, build/buy/partner — show structured thinking.'},
+      {n:'Options & Tradeoffs',d:'Present 2-3 options. Pros, cons, risks of each. Show you considered alternatives.'},
+      {n:'Recommendation',d:'Choose one. Explain why. State success metrics. First 30/60/90 day actions.'},
+    ],
+    example:'"Before I answer, let me clarify — are we talking enterprise ML platform or developer-facing API? I\'ll assume enterprise. Here\'s how I\'d think about this…"',
+  },
+  metrics:{
+    name:'Metrics Deep-Dive Framework',
+    desc:'Use for: metric drops / measurement questions / analytics',
+    steps:[
+      {n:'Clarify',d:'What metric, what timeframe, what product? First check: is it a data artifact — logging bug, pipeline failure?'},
+      {n:'Hypotheses',d:'List 3-5 possible root causes. Segment by: platform, user type, geography, feature, acquisition channel.'},
+      {n:'Data Investigation',d:'What do you look at? Funnels, cohorts, event logs, A/B experiments, external signals.'},
+      {n:'Root Cause',d:'Narrow to 1-2 likely causes. What evidence confirms or rules out each hypothesis?'},
+      {n:'Action & Prevention',d:'Fix short-term. Long-term solution. Prevention: what alerts and monitoring do you add?'},
+    ],
+    example:'"First, I\'d check if this is real or a data issue — pipeline failure or logging bug. If confirmed real, I\'d immediately segment by platform because iOS vs Android vs web narrows the cause dramatically…"',
+  },
+  'ai-ml':{
+    name:'AI/ML Product Answer',
+    desc:'Use for: ML metrics, model drift, AI product strategy, responsible AI',
+    steps:[
+      {n:'Frame the Problem',d:'What business outcome does this model serve? What does good look like for the user?'},
+      {n:'Technical Approach',d:'Model type, data requirements, key technical constraints: latency, accuracy, explainability.'},
+      {n:'Success Metrics',d:'Separate model metrics (precision, recall, AUC) from product metrics (CTR, engagement, revenue).'},
+      {n:'Tradeoffs',d:'Accuracy vs latency. False positives vs false negatives. Explainability vs performance.'},
+      {n:'Real Example',d:'Ground in your experience. "At Verizon, our churn model had this exact issue when…"'},
+    ],
+    example:'"Model drift is a symptom, not the root cause. At Verizon, our churn prediction model trained on pre-pandemic behavior showed AUC drop from 0.89 to 0.76 over three months. We identified three types of drift…"',
+  },
+  tpm:{
+    name:'TPM Program Management Answer',
+    desc:'Use for: cross-team coordination, risk, program health, delivery',
+    steps:[
+      {n:'Program Scope',d:'Teams involved, timeline, business objective, key milestones. Set the stage with specifics.'},
+      {n:'Your Role',d:'Be explicit: you own outcomes, not just coordinate. What decisions were yours to make?'},
+      {n:'Framework & Tools',d:'OKRs, RACI, dependency maps, risk registers. Show systematic approach.'},
+      {n:'Cross-Team Coordination',d:'How did you manage dependencies? Escalate blockers? Align leadership? Give specifics.'},
+      {n:'Outcome & Learning',d:'Deliver on time? Quantify impact. What would you do differently?'},
+    ],
+    example:'"At Amazon Alexa AI, I owned a 14-team program to ship context-aware responses. In week 1, I built a dependency map that revealed 3 teams on the critical path that leadership didn\'t know about…"',
+  },
+};
 
-function renderMd(raw) {
-  if (!raw) return '';
-  let t = raw
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
-    .replace(/__(.*?)__/g,'<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g,'<em>$1</em>')
-    .replace(/^## (.*?)$/gm,'<h3>$1</h3>')
-    .replace(/^### (.*?)$/gm,'<h4>$1</h4>');
+// ═══════════════════════════════════════════════
+// SYSTEM PROMPT BUILDER
+// ═══════════════════════════════════════════════
+const BASE = `You are a world-class PM interview coach specializing in Senior PM and TPM roles at top tech companies. You coach Raymond Pius — a Senior Technical PM with 9 years experience, previously at Amazon Alexa AI and AWS SageMaker, currently at Verizon leading AI/ML product initiatives. Raymond is targeting Senior PM and Senior TPM roles. His strengths are AI/ML product ownership, data-driven decision making, cross-functional leadership, and enterprise-scale delivery. Always frame answers around product ownership and decision making — never program management coordination. Use STAR format for behavioral questions. Be direct, specific, and push for stronger answers.`;
 
-  const lines = t.split('\n');
-  const out = []; let inUl = false, inOl = false;
-  for (const line of lines) {
-    if (/^[-•] /.test(line)) {
-      if (inOl){out.push('</ol>');inOl=false;}
-      if (!inUl){out.push('<ul>');inUl=true;}
-      out.push(`<li>${line.replace(/^[-•] /,'')}</li>`);
-    } else if (/^\d+\. /.test(line)) {
-      if (inUl){out.push('</ul>');inUl=false;}
-      if (!inOl){out.push('<ol>');inOl=true;}
-      out.push(`<li>${line.replace(/^\d+\. /,'')}</li>`);
-    } else {
-      if (inUl){out.push('</ul>');inUl=false;}
-      if (inOl){out.push('</ol>');inOl=false;}
-      out.push(line);
-    }
-  }
-  if (inUl) out.push('</ul>');
-  if (inOl) out.push('</ol>');
-
-  t = out.join('\n')
-    .replace(/\n\n+/g,'</p><p>')
-    .replace(/(?<!<\/[a-z]+>)\n(?!<[a-z])/g,'<br>');
-  return `<p>${t}</p>`;
-}
-
-function extractCoaching(raw) {
-  const m = raw.match(/<coaching>([\s\S]*?)<\/coaching>/);
-  let data = null;
-  if (m) {
-    try { data = JSON.parse(m[1].trim()); } catch(e) {}
-    raw = raw.replace(/<coaching>[\s\S]*?<\/coaching>/g,'').trim();
-  }
-  return { clean: raw, data };
-}
-
-// ── COACHING PANEL ──
-function scoreColor(n) {
-  return n >= 8 ? 'var(--green)' : n >= 5 ? 'var(--amber)' : 'var(--red)';
-}
-
-function updatePanel(data) {
-  ['clarity','impact','specificity'].forEach(k => {
-    const v = parseInt(data[k]) || 0;
-    const c = scoreColor(v);
-    const sv = document.getElementById(`sv-${k}`);
-    const bf = document.getElementById(`bf-${k}`);
-    if (sv) { sv.textContent = `${v}/10`; sv.style.color = c; }
-    if (bf) { setTimeout(()=>{ bf.style.width=(v/10*100)+'%'; bf.style.background=c; },50); }
-  });
-
-  const defs = {
-    strength: { cls:'cc-strength', lbl:'What Worked',       key:'strength' },
-    improve:  { cls:'cc-improve',  lbl:'Improve',           key:'improve'  },
-    followup: { cls:'cc-followup', lbl:'Likely Follow-up',  key:'followup' },
+function buildPrompt() {
+  const roleMap = {
+    pm:    'Evaluate at PM level: user empathy, prioritization, product fundamentals.',
+    'sr-pm':'Evaluate at Senior PM level: strategic ownership, roadmap decisions, data-driven thinking, executive communication.',
+    tpm:   'Evaluate at Senior TPM level: technical depth, cross-team program management, delivery excellence, risk management — not just coordination.',
+    'ai-pm':'Evaluate at AI PM level: ML lifecycle knowledge, responsible AI governance, model metrics, AI/ML product strategy and real-world tradeoffs.',
   };
-  Object.entries(defs).forEach(([id,cfg])=>{
-    const el = document.getElementById(`cc-${id}`);
-    const val = data[cfg.key];
-    if (el && val) {
-      el.className = `cp-card ${cfg.cls}`;
-      el.innerHTML = `<div class="cc-lbl">${cfg.lbl}</div><div class="cc-txt">${val}</div>`;
-    }
-  });
-
-  G.round++;
-  const rEl = document.getElementById('cpRound');
-  if (rEl) rEl.textContent = `Exchange ${G.round}`;
-}
-
-function resetPanel() {
-  ['clarity','impact','specificity'].forEach(k=>{
-    const sv=document.getElementById(`sv-${k}`); const bf=document.getElementById(`bf-${k}`);
-    if(sv){sv.textContent='—';sv.style.color='var(--txt3)';}
-    if(bf){bf.style.width='0%';}
-  });
-  const defaults = {
-    strength:'Feedback appears after your first answer.',
-    improve: 'Areas to strengthen appear here.',
-    followup:'Anticipated next question appears here.',
+  const compMap = {
+    none:'',
+    amazon:'\n\nCOMPANY — AMAZON: Frame feedback using Leadership Principles. Require "I" statements. Push for Customer Obsession framing. Expect candidates to name specific LPs. Penalize "we" answers, vague outcomes, answers that do not show ownership.',
+    google:'\n\nCOMPANY — GOOGLE: Focus on structured thinking, clear frameworks, hypothesis-driven investigation, systems-level scale. Reward MECE analysis. Penalize unstructured answers without data.',
+    meta:'\n\nCOMPANY — META: Lead with impact and scale. Reward bold thinking, quantified business results, fast-iteration mindset, competitive differentiation. Penalize answers lacking measurable outcomes.',
   };
-  const lbls = {strength:'What Worked',improve:'Improve',followup:'Likely Follow-up'};
-  Object.keys(defaults).forEach(k=>{
-    const el=document.getElementById(`cc-${k}`);
-    if(el){el.className='cp-card cc-empty';el.innerHTML=`<div class="cc-lbl">${lbls[k]}</div><div class="cc-txt">${defaults[k]}</div>`;}
-  });
-  G.round=0;
-  const rEl=document.getElementById('cpRound');
-  if(rEl) rEl.textContent='';
+  const modeMap = {
+    practice:`\n\nMODE — PRACTICE COACH: After the user answers: provide structured feedback, highlight 1-2 strengths, identify 1-2 key improvements, show a brief ideal answer, identify gaps. End ONLY with this JSON — no text after it:\n<eval>{"clarity":N,"impact":N,"specificity":N,"overall":N,"clarityExpl":"one sentence","impactExpl":"one sentence","specificityExpl":"one sentence","idealAnswer":"2-4 sentence ideal","gapAnalysis":"what was missing","followups":["follow-up 1","follow-up 2"],"mistakes":["mistake 1","mistake 2"],"tooAbstract":false}</eval>`,
+    mock:`\n\nMODE — MOCK INTERVIEWER: Play a tough senior interviewer. Ask the question directly and probe weak points hard. No coaching during the interview. After 3-4 exchanges or when user says "end mock", give final score and debrief ending with:\n<eval>{"clarity":N,"impact":N,"specificity":N,"overall":N,"clarityExpl":"...","impactExpl":"...","specificityExpl":"...","idealAnswer":"","gapAnalysis":"key gaps","followups":[],"mistakes":[],"tooAbstract":false}</eval>`,
+    builder:`\n\nMODE — ANSWER BUILDER: User pastes rough notes or a draft. Rewrite into polished STAR answer keeping their intent, examples, and context. End ONLY with these two JSON blocks:\n<rewrite>{"improved":"full answer","whyBetter":["improvement 1","improvement 2","improvement 3","improvement 4"],"sections":{"Opening":"...","Framework":"...","Example":"...","Metrics":"...","Conclusion":"..."}}</rewrite>\n<eval>{"clarity":N,"impact":N,"specificity":N,"overall":N,"clarityExpl":"...","impactExpl":"...","specificityExpl":"...","idealAnswer":"","gapAnalysis":"","followups":[],"mistakes":[],"tooAbstract":false}</eval>`,
+  };
+  const strictCtx = G.strict ? '\n\nSTRICT MODE: Be brutally direct. Say exactly: "This answer is too generic." "You have not shown ownership." "No quantified outcome — this will fail at Senior level." No softening. No encouragement. Only hard truth.' : '';
+  return `${BASE}\n\n${roleMap[G.role]}${compMap[G.company]}${modeMap[G.mode]}${strictCtx}`;
 }
 
-// ── MESSAGES ──
-function clearWelcome() {
-  const w = document.getElementById('welcomeEl');
-  if (w) w.remove();
-}
+// ═══════════════════════════════════════════════
+// API LAYER
+// ═══════════════════════════════════════════════
+function getKey(){ return document.getElementById('apiKey').value.trim(); }
 
-function addMsg(role, rawText, isErr=false) {
-  const feed = document.getElementById('chatMsgs');
-  clearWelcome();
-
-  const { clean, data } = extractCoaching(rawText);
-  const html = isErr ? rawText : renderMd(clean);
-  const uid = 'msg-' + Date.now() + Math.random().toString(36).slice(2);
-
-  const wrap = document.createElement('div');
-  wrap.className = `msg ${role} ${isErr?'sys':''}`;
-
-  const av = role === 'user' ? 'RP' : 'AI';
-  wrap.innerHTML = `
-    <div class="msg-av">${av}</div>
-    <div class="msg-body">
-      <div class="bubble" id="${uid}">
-        ${html}
-        ${!isErr?`<button class="copy-btn" onclick="copyMsg('${uid}')">Copy</button>`:''}
-      </div>
-      <div class="msg-ts">${ts()}</div>
-    </div>`;
-
-  feed.appendChild(wrap);
-  feed.scrollTop = feed.scrollHeight;
-  if (data) updatePanel(data);
-}
-
-function addTyping() {
-  const feed = document.getElementById('chatMsgs');
-  clearWelcome();
-  const el = document.createElement('div');
-  el.className = 'typing-wrap'; el.id = 'typingEl';
-  el.innerHTML = `<div class="msg-av" style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#1e2148,#2a2f6a);color:var(--purple);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;flex-shrink:0;margin-top:2px">AI</div>
-    <div class="typing-bubble"><div class="t-dot"></div><div class="t-dot"></div><div class="t-dot"></div></div>`;
-  feed.appendChild(el);
-  feed.scrollTop = feed.scrollHeight;
-}
-
-function removeTyping() {
-  const el = document.getElementById('typingEl');
-  if (el) el.remove();
-}
-
-// ── API CALL ──
 async function callClaude(userText) {
-  if (!G.apiKey) {
-    addMsg('ai','&#9888; Please save your Anthropic API key first using the field at the top of the page.',true);
-    return;
-  }
-  if (G.loading) return;
-  G.loading = true;
-  document.getElementById('sendBtn').disabled = true;
-
-  G.msgs.push({ role:'user', content: userText });
-  if (G.msgs.length > MAX_CTX) G.msgs = G.msgs.slice(-MAX_CTX);
-
-  addTyping();
-
+  if (!getKey()){ toast('Enter your Claude API key first.'); return null; }
+  G.msgs.push({ role:'user', content:userText });
   try {
-    const res = await fetch(API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key':    G.apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true',
+    const r = await fetch(API, {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key':getKey(),
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true',
       },
-      body: JSON.stringify({
-        model:      MODEL,
-        max_tokens: 2048,
-        system:     PROMPTS[G.mode],
-        messages:   G.msgs,
-      }),
+      body:JSON.stringify({ model:MDL, max_tokens:3200, system:buildPrompt(), messages:G.msgs.slice(-28) }),
     });
-
-    if (!res.ok) {
-      const err = await res.json().catch(()=>({error:{message:`HTTP ${res.status}`}}));
-      throw new Error(err.error?.message || `HTTP ${res.status}`);
+    if (!r.ok){
+      const e = await r.json().catch(()=>({}));
+      toast('API error: '+(e.error?.message||r.status));
+      G.msgs.pop(); return null;
     }
+    const j = await r.json();
+    const reply = j.content?.[0]?.text||'';
+    G.msgs.push({ role:'assistant', content:reply });
+    return reply;
+  } catch(e){ toast('Network error — check connection.'); G.msgs.pop(); return null; }
+}
 
-    const json = await res.json();
-    const reply = json.content?.[0]?.text || '(No response)';
-    G.msgs.push({ role:'assistant', content: reply });
+async function rawCall(messages, sys) {
+  if (!getKey()){ toast('Enter your Claude API key first.'); return null; }
+  try {
+    const r = await fetch(API, {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key':getKey(),
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true',
+      },
+      body:JSON.stringify({ model:MDL, max_tokens:3200, system:sys||buildPrompt(), messages }),
+    });
+    if (!r.ok){ const e=await r.json().catch(()=>({})); toast('API error: '+(e.error?.message||r.status)); return null; }
+    const j = await r.json();
+    return j.content?.[0]?.text||'';
+  } catch(e){ toast('Network error.'); return null; }
+}
 
-    removeTyping();
-    addMsg('ai', reply);
+// ═══════════════════════════════════════════════
+// PARSING
+// ═══════════════════════════════════════════════
+function parseTag(tag, raw){
+  const m = raw.match(new RegExp(`<${tag}>([\\s\\S]*?)<\\/${tag}>`));
+  if (!m) return null;
+  try { return JSON.parse(m[1].trim()); } catch(e){ return null; }
+}
+function stripTags(raw){
+  return raw.replace(/<eval>[\s\S]*?<\/eval>/g,'').replace(/<rewrite>[\s\S]*?<\/rewrite>/g,'').trim();
+}
+function md(t){
+  if (!t) return '';
+  return t
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/### (.+)/g,'<h3>$1</h3>').replace(/## (.+)/g,'<h3>$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>')
+    .replace(/^[-•] (.+)/gm,'<li>$1</li>').replace(/^\d+\. (.+)/gm,'<li>$1</li>')
+    .replace(/(<li>[\s\S]+?<\/li>)/g,'<ul>$1</ul>')
+    .replace(/\n{2,}/g,'<br><br>').replace(/\n/g,'<br>');
+}
+function esc(s){ return (s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
-  } catch(e) {
-    removeTyping();
-    G.msgs.pop();
-    addMsg('ai',`&#9888; Error: ${e.message}<br><small>Check your API key and try again. Make sure it starts with sk-ant-</small>`, true);
-  } finally {
-    G.loading = false;
-    document.getElementById('sendBtn').disabled = false;
-    document.getElementById('chatInput').focus();
+// ═══════════════════════════════════════════════
+// SESSION TRACKING
+// ═══════════════════════════════════════════════
+function trackSession(ev){
+  const s=G.session; s.n++;
+  s.clarity.push(ev.clarity); s.impact.push(ev.impact);
+  s.spec.push(ev.specificity); s.overall.push(ev.overall);
+  renderStats();
+}
+function avg(arr){ return arr.length ? (arr.reduce((a,b)=>a+b,0)/arr.length).toFixed(1) : null; }
+
+function renderStats(){
+  const s=G.session;
+  document.getElementById('ss-attempts').textContent = s.n;
+  const [ac,ai,as_,ao] = [avg(s.clarity),avg(s.impact),avg(s.spec),avg(s.overall)];
+  document.getElementById('ss-clarity').textContent  = ac  ? ac+'/10'  : '—';
+  document.getElementById('ss-impact').textContent   = ai  ? ai+'/10'  : '—';
+  document.getElementById('ss-spec').textContent     = as_ ? as_+'/10' : '—';
+  document.getElementById('ss-overall').textContent  = ao  ? ao+'/10'  : '—';
+
+  const tEl = document.getElementById('ss-trend');
+  if (s.overall.length>=2){
+    const [a,b] = s.overall.slice(-2);
+    if (b>a) tEl.innerHTML='<span class="trend-up">&#8593; Improving</span>';
+    else if (b<a) tEl.innerHTML='<span class="trend-dn">&#8595; Needs focus</span>';
+    else tEl.textContent='&#8594; Steady';
+  } else tEl.textContent='—';
+
+  if (s.n>=2){
+    const dims=[{n:'Clarity',a:s.clarity},{n:'Impact',a:s.impact},{n:'Specificity',a:s.spec}];
+    const html=dims.map(d=>{
+      const v=parseFloat(avg(d.a));
+      if (v>=7.5) return `<div class="ins-card ins-strong"><div class="ins-lbl">Strength</div>Strong in ${d.n} — avg ${avg(d.a)}/10</div>`;
+      if (v<6)    return `<div class="ins-card ins-improve"><div class="ins-lbl">Needs Work</div>Improve ${d.n} — avg ${avg(d.a)}/10</div>`;
+      return '';
+    }).join('');
+    document.getElementById('insightsArea').innerHTML = html||'<div style="font-size:11.5px;color:var(--text3)">Keep practicing — insights build after more answers</div>';
+    document.getElementById('rp-insights').style.display='block';
   }
 }
 
-// ── CONTROLS ──
-function saveKey() {
-  const val = document.getElementById('apiKeyInput').value.trim();
-  const st  = document.getElementById('apiSt');
-  if (!val || (!val.startsWith('sk-ant-') && !val.startsWith('sk-'))) {
-    st.textContent='✗ Invalid — must start with sk-ant-'; st.className='api-st err'; return;
-  }
-  G.apiKey = val;
-  document.getElementById('apiKeyInput').value = '•'.repeat(24);
-  st.textContent='✓ Key saved securely in memory'; st.className='api-st ok';
-}
+// ═══════════════════════════════════════════════
+// SCORE RENDERING
+// ═══════════════════════════════════════════════
+function scoreCol(n){ return n>=8?{bar:'var(--green)',cls:'s-high'}:n>=6?{bar:'var(--amber)',cls:'s-mid'}:{bar:'var(--red)',cls:'s-low'}; }
 
-function setMode(mode) {
-  G.mode = mode;
-  ['practice','mock','builder'].forEach(m=>{
-    document.getElementById(`btn-${m}`).classList.toggle('active', m===mode);
-  });
-  const chip = document.getElementById('modeChip');
-  const lbl  = {practice:'PRACTICE', mock:'MOCK INTERVIEW', builder:'ANSWER BUILDER'};
-  const cls  = {practice:'chip-practice', mock:'chip-mock', builder:'chip-builder'};
-  chip.textContent = lbl[mode];
-  chip.className   = `mode-chip ${cls[mode]}`;
-  document.getElementById('endBtn').classList.toggle('show', mode==='mock');
-  const hints = {
-    practice:'Type your answer here... Enter to send · Shift+Enter for new line',
-    mock:    'Respond to the interviewer... Click "End Interview & Score" when ready',
-    builder: 'Paste your rough answer or bullet points here — I will transform it into a polished STAR answer',
-  };
-  document.getElementById('chatInput').placeholder = hints[mode];
-}
-
-function pickQuestion(q, el) {
-  document.querySelectorAll('.q-item').forEach(i=>i.classList.remove('active'));
-  if (el) el.classList.add('active');
-  G.question = q;
-  document.getElementById('chatQ').innerHTML = `<strong style="color:var(--txt1)">${q}</strong>`;
-  clearMessages();
-
-  const intro = {
-    practice:`[QUESTION SELECTED] "${q}"`,
-    mock:    `[START MOCK INTERVIEW] Please ask me this question: "${q}"`,
-    builder: `[ANSWER BUILDER] I want to build a polished answer for: "${q}". I will paste my rough answer below.`,
-  };
-  callClaude(intro[G.mode]);
-}
-
-function useCustomQ() {
-  const q = document.getElementById('customQ').value.trim();
-  if (!q) return;
-  document.getElementById('customQ').value = '';
-  document.querySelectorAll('.q-item').forEach(i=>i.classList.remove('active'));
-  pickQuestion(q, null);
-}
-
-function sendMsg() {
-  const ta   = document.getElementById('chatInput');
-  const text = ta.value.trim();
-  if (!text || G.loading) return;
-  ta.value = '';
-  addMsg('user', text);
-  callClaude(text);
-}
-
-function endInterview() {
-  const text = 'END INTERVIEW — please give me my final assessment, overall score out of 10, and specific things to improve before the real interview.';
-  addMsg('user', text);
-  callClaude(text);
-}
-
-function clearMessages() {
-  G.msgs = [];
-  document.getElementById('chatMsgs').innerHTML = '';
-  resetPanel();
-}
-
-function newSession() {
-  clearMessages();
-  G.question = '';
-  document.getElementById('chatQ').innerHTML = '<span class="chat-q-ph">Select a question from the sidebar to begin</span>';
-  document.querySelectorAll('.q-item').forEach(i=>i.classList.remove('active'));
-  const feed = document.getElementById('chatMsgs');
-  feed.innerHTML = `<div class="welcome" id="welcomeEl">
-    <div class="welcome-ico">&#127919;</div>
-    <h2>Ready to ace your PM interview?</h2>
-    <p>Save your Anthropic API key above, choose a coaching mode, then select a question from the sidebar or type your own.</p>
-  </div>`;
-}
-
-function clearChat() {
-  clearMessages();
-  const feed = document.getElementById('chatMsgs');
-  feed.innerHTML = `<div class="welcome" id="welcomeEl">
-    <div class="welcome-ico">&#127919;</div>
-    <h2>Chat cleared.</h2>
-    <p>Select a question or type a custom one to start a new session.</p>
-  </div>`;
-}
-
-function handleKey(e) {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); }
-}
-
-function copyMsg(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const text = el.innerText.replace(/^Copy$/m,'').trim();
-  navigator.clipboard.writeText(text).then(()=>{
-    const btn = el.querySelector('.copy-btn');
-    if (btn) { btn.textContent='Copied!'; setTimeout(()=>{ btn.textContent='Copy'; },1600); }
-  });
-}
-
-function copyNotes() {
-  const v = document.getElementById('sessionNotes').value;
-  if (v) navigator.clipboard.writeText(v);
-}
-
-function saveSession() {
-  const lines = [
-    'PM INTERVIEW COACH — SESSION EXPORT',
-    `Date: ${new Date().toLocaleString()}`,
-    `Mode: ${G.mode.toUpperCase()}`,
-    G.question ? `Question: ${G.question}` : '',
-    '',
-    '═'.repeat(60),
-    'CONVERSATION TRANSCRIPT',
-    '═'.repeat(60),
+function renderScores(ev){
+  const dims=[
+    {name:'Clarity',val:ev.clarity,expl:ev.clarityExpl},
+    {name:'Impact',val:ev.impact,expl:ev.impactExpl},
+    {name:'Specificity',val:ev.specificity,expl:ev.specificityExpl},
   ];
-  G.msgs.forEach(m => {
-    const role = m.role === 'user' ? 'RAYMOND' : 'COACH (Claude AI)';
-    const content = m.content.replace(/<coaching>[\s\S]*?<\/coaching>/g,'').trim();
-    lines.push(`\n[${role}]\n${content}`);
+  let html='';
+  const oc=scoreCol(ev.overall);
+  html+=`<div class="overall-box"><div class="overall-lbl">Overall Score</div><div class="overall-num ${oc.cls}">${ev.overall}<sup>/10</sup></div></div>`;
+  dims.forEach(d=>{
+    const c=scoreCol(d.val);
+    html+=`<div class="sc-card"><div class="sc-top"><span class="sc-name">${d.name}</span><span class="sc-num ${c.cls}">${d.val}/10</span></div><div class="sc-track"><div class="sc-fill" id="bar_${d.name}" style="width:0;background:${c.bar}"></div></div><div class="sc-expl">${d.expl||''}</div></div>`;
   });
-  const notes = document.getElementById('sessionNotes').value;
-  if (notes) {
-    lines.push('','═'.repeat(60),'SESSION NOTES','═'.repeat(60),notes);
+  document.getElementById('scoreArea').innerHTML=html;
+  setTimeout(()=>dims.forEach(d=>{ const el=document.getElementById('bar_'+d.name); if(el) el.style.width=(d.val*10)+'%'; }),60);
+
+  if (ev.mistakes&&ev.mistakes.length){
+    document.getElementById('mistakesArea').innerHTML=ev.mistakes.map(m=>`<div class="mistake-item"><span class="mi-icon">&#9888;</span>${m}</div>`).join('');
+    document.getElementById('rp-mistakes').style.display='block';
+  } else document.getElementById('rp-mistakes').style.display='none';
+
+  if (ev.followups&&ev.followups.length){
+    document.getElementById('followupsArea').innerHTML=ev.followups.map(fq=>`<div class="fq-item" data-fq="${esc(fq)}" onclick="loadFollowUp(this.dataset.fq)">&#8594; ${fq}</div>`).join('');
+    document.getElementById('rp-followups').style.display='block';
+  } else document.getElementById('rp-followups').style.display='none';
+}
+
+// ═══════════════════════════════════════════════
+// CHAT UI
+// ═══════════════════════════════════════════════
+function addMsg(role, content, raw=false){
+  const c=document.getElementById('chatMsgs');
+  const d=document.createElement('div');
+  d.className='msg '+role;
+  d.innerHTML=`<div class="avatar">${role==='ai'?'P':'R'}</div><div class="bubble">${raw?content:md(content)}</div>`;
+  c.appendChild(d); c.scrollTop=c.scrollHeight; return d;
+}
+function showTyping(){
+  const c=document.getElementById('chatMsgs');
+  const d=document.createElement('div'); d.className='msg ai'; d.id='typing';
+  d.innerHTML='<div class="avatar">P</div><div class="bubble"><div class="typing"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div></div>';
+  c.appendChild(d); c.scrollTop=c.scrollHeight;
+}
+function rmTyping(){ const t=document.getElementById('typing'); if(t)t.remove(); }
+function lock(v){ G.loading=v; document.getElementById('sendBtn').disabled=v; document.getElementById('improveBtn').disabled=v; }
+function clearChat(){ document.getElementById('chatMsgs').innerHTML=''; G.msgs=[]; }
+
+// ═══════════════════════════════════════════════
+// SUBMIT ANSWER
+// ═══════════════════════════════════════════════
+async function submitAnswer(){
+  const box=document.getElementById('ansBox');
+  const text=box.value.trim();
+  if (!text||G.loading) return;
+  if (!getKey()){ toast('Enter your Claude API key first.'); return; }
+
+  G.lastAnswer=text;
+  addMsg('user',text);
+  box.value=''; autoH(box);
+  lock(true); showTyping();
+
+  const prompt = G.question ? `Question: "${G.question}"\n\nMy answer:\n${text}` : text;
+  const reply = await callClaude(prompt);
+  rmTyping(); lock(false);
+  if (!reply) return;
+
+  const ev=parseTag('eval',reply);
+  const rw=parseTag('rewrite',reply);
+  const clean=stripTags(reply);
+
+  if (clean) addMsg('ai',clean);
+
+  // Abstract answer warning (Feature 6)
+  if (ev&&ev.tooAbstract){
+    const c=document.getElementById('chatMsgs');
+    const d=document.createElement('div'); d.className='msg ai';
+    d.innerHTML=`<div class="avatar">P</div><div class="bubble"><div class="abstract-warn"><span class="aw-icon">&#128161;</span><div><strong>Ground this in real experience.</strong> This answer reads as too abstract. Connect it to a specific situation from Alexa AI, AWS SageMaker, or Verizon. Interviewers at Senior level reward concrete lived examples over generic frameworks.</div></div></div>`;
+    c.appendChild(d); c.scrollTop=c.scrollHeight;
   }
-  lines.push('','═'.repeat(60),'Built by Raymond Pius | PM Interview Coach | Powered by Claude AI');
 
-  const blob = new Blob([lines.join('\n')],{type:'text/plain'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `pm-coach-${Date.now()}.txt`;
-  a.click();
-  URL.revokeObjectURL(a.href);
+  if (ev){ trackSession(ev); renderScores(ev); }
+  if (rw) renderBA(G.lastAnswer,rw);
 }
 
-// ── RENDER QUESTION BANK ──
-function renderQBank() {
-  const container = document.getElementById('questionBank');
-  Object.entries(QB).forEach(([cat, qs]) => {
-    const div = document.createElement('div');
-    const catId = cat.replace(/\W+/g,'_');
-    div.innerHTML = `
-      <div class="cat-hdr" onclick="toggleCat('${catId}')">
-        <span>${cat}</span>
-        <span class="cat-arr" id="arr-${catId}">&#9654;</span>
+// ═══════════════════════════════════════════════
+// IMPROVE MY ANSWER
+// ═══════════════════════════════════════════════
+async function improveAnswer(){
+  const box=document.getElementById('ansBox');
+  const text=box.value.trim();
+  if (!text||G.loading) return;
+  if (!getKey()){ toast('Enter your Claude API key first.'); return; }
+
+  G.lastAnswer=text;
+  addMsg('user','[Improve My Answer]\n'+text);
+  box.value=''; autoH(box);
+  lock(true); showTyping();
+
+  const builderSys=`${BASE}\n\nMODE — ANSWER BUILDER: Rewrite the user's answer into a stronger, polished STAR answer. Keep their original intent, specific examples, and context — improve structure, specificity, metrics depth, and business framing. Do NOT completely replace their examples. End ONLY with:\n<rewrite>{"improved":"full polished answer","whyBetter":["specific improvement 1","specific improvement 2","specific improvement 3","specific improvement 4"],"sections":{"Opening":"...","Framework":"...","Example":"...","Metrics":"...","Conclusion":"..."}}</rewrite>\n<eval>{"clarity":N,"impact":N,"specificity":N,"overall":N,"clarityExpl":"...","impactExpl":"...","specificityExpl":"...","idealAnswer":"","gapAnalysis":"","followups":[],"mistakes":[],"tooAbstract":false}</eval>`;
+
+  const msgs=[{role:'user',content:`Question: "${G.question||'the interview question'}"\n\nMy answer to improve:\n${text}`}];
+  const reply=await rawCall(msgs,builderSys);
+  rmTyping(); lock(false);
+  if (!reply) return;
+
+  const ev=parseTag('eval',reply);
+  const rw=parseTag('rewrite',reply);
+  const clean=stripTags(reply);
+
+  if (clean) addMsg('ai',clean);
+  if (ev){ trackSession(ev); renderScores(ev); }
+  if (rw) renderBA(G.lastAnswer,rw);
+}
+
+// ═══════════════════════════════════════════════
+// BEFORE / AFTER (Features 12, 13, 14)
+// ═══════════════════════════════════════════════
+function renderBA(original, rw){
+  const id=++G.baCounter;
+  const c=document.getElementById('chatMsgs');
+  const d=document.createElement('div'); d.className='msg ai';
+
+  const why=(rw.whyBetter||[]).map(w=>`<div class="why-row"><span class="why-check">&#10003;</span>${w}</div>`).join('');
+  const secs=rw.sections?Object.entries(rw.sections).filter(([,v])=>v).map(([k,v])=>`
+    <div class="sec-row">
+      <span class="sec-lbl">${k}</span>
+      <div style="flex:1">
+        <div class="sec-txt" id="sec_${id}_${k}">${v.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+        <button class="sec-regen" data-id="${id}" data-sec="${k}" onclick="regenSection(this)">&#8635; Regenerate</button>
       </div>
-      <div class="cat-qs" id="qs-${catId}">
-        ${qs.map(q=>`<div class="q-item" onclick="pickQuestion(${JSON.stringify(q)}, this)">${q}</div>`).join('')}
-      </div>`;
-    container.appendChild(div);
-  });
+    </div>`).join(''):'';
+
+  d.innerHTML=`
+    <div class="avatar">P</div>
+    <div class="bubble" style="max-width:calc(100% - 46px)">
+      <strong>&#9889; Before vs After — Improved Answer</strong>
+      <div class="ba-card">
+        <div class="ba-tabs">
+          <div class="ba-tab" id="btab_b_${id}" onclick="baSwitch('${id}','b')">&#128196; Original</div>
+          <div class="ba-tab active" id="btab_a_${id}" onclick="baSwitch('${id}','a')">&#10024; Improved</div>
+        </div>
+        <div class="ba-content hidden" id="ba_b_${id}">${original.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</div>
+        <div class="ba-content" id="ba_a_${id}">${(rw.improved||'').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</div>
+      </div>
+      ${why?`<div class="why-list"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:3px">Why This Answer Is Better</div>${why}</div>`:''}
+      ${secs?`<div class="sec-coach"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:6px">Section Breakdown — click Regenerate to improve any section</div>${secs}</div>`:''}
+    </div>`;
+  c.appendChild(d); c.scrollTop=c.scrollHeight;
 }
 
-function toggleCat(id) {
-  const qs  = document.getElementById(`qs-${id}`);
-  const arr = document.getElementById(`arr-${id}`);
-  const open = qs.classList.toggle('open');
-  arr.classList.toggle('open', open);
+function baSwitch(id,tab){
+  const bEl=document.getElementById('ba_b_'+id),aEl=document.getElementById('ba_a_'+id);
+  const tb=document.getElementById('btab_b_'+id),ta=document.getElementById('btab_a_'+id);
+  if (!bEl||!aEl) return;
+  if (tab==='b'){ bEl.classList.remove('hidden'); aEl.classList.add('hidden'); tb.classList.add('active'); ta.classList.remove('active'); }
+  else { aEl.classList.remove('hidden'); bEl.classList.add('hidden'); ta.classList.add('active'); tb.classList.remove('active'); }
 }
 
-// ── INIT ──
-renderQBank();
-// Open first category by default
-const firstCatId = Object.keys(QB)[0].replace(/\W+/g,'_');
-toggleCat(firstCatId);
+async function regenSection(btn){
+  if (G.loading) return;
+  if (!getKey()){ toast('Enter your Claude API key first.'); return; }
+  const id=btn.dataset.id, sec=btn.dataset.sec;
+  const el=document.getElementById(`sec_${id}_${sec}`);
+  if (!el) return;
+  const orig=el.textContent;
+  el.textContent='Regenerating…'; lock(true);
 
-// Enter on API key input
-document.getElementById('apiKeyInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') saveKey();
-});
+  const sys=`${BASE}\n\nYou are rewriting a single section of a PM interview answer. Return ONLY the improved section text. No JSON, no labels, no explanation. Just the text.`;
+  const msgs=[{role:'user',content:`Question: "${G.question||'PM interview question'}"\nSection: ${sec}\nCurrent text: ${orig}\n\nRewrite this section to be more specific, impactful, and grounded in real experience.`}];
+  const reply=await rawCall(msgs,sys);
+  lock(false);
+  el.textContent = reply ? reply.trim() : orig;
+}
+
+// ═══════════════════════════════════════════════
+// QUESTION LOADING
+// ═══════════════════════════════════════════════
+function loadQ(q, type, btn){
+  G.question=q; G.qtype=type; G.msgs=[];
+  document.querySelectorAll('.qbtn').forEach(b=>b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  document.getElementById('qTitle').textContent=q;
+  document.getElementById('qMeta').textContent=typeLabel(type)+' · '+roleLabel()+' · '+compLabel();
+  const h=document.getElementById('structHint');
+  if (HINT[type]){ h.innerHTML='<strong>Suggested Structure:</strong> '+HINT[type]; h.classList.add('show'); }
+  else h.classList.remove('show');
+  askQ(q);
+}
+
+function loadCustomQ(){
+  const inp=document.getElementById('customQ');
+  const q=inp.value.trim(); if (!q) return;
+  document.querySelectorAll('.qbtn').forEach(b=>b.classList.remove('active'));
+  G.question=q; G.qtype='behavioral'; G.msgs=[];
+  document.getElementById('qTitle').textContent=q;
+  document.getElementById('qMeta').textContent='Custom · '+roleLabel()+' · '+compLabel();
+  const h=document.getElementById('structHint');
+  h.innerHTML='<strong>Suggested Structure:</strong> '+HINT.behavioral; h.classList.add('show');
+  askQ(q); inp.value='';
+}
+
+async function askQ(q){
+  document.getElementById('chatMsgs').innerHTML='';
+  if (!getKey()){ addMsg('ai',`**Question:** ${q}\n\nEnter your API key in the top bar to get AI coaching, then type your answer below.`); return; }
+  lock(true); showTyping();
+  const intro={
+    practice:`Introduce this PM interview question with a brief framing of what a great answer looks like for a ${roleLabel()} role${G.company!=='none'?' interviewing at '+compLabel():''}. Then ask the question clearly.`,
+    mock:`Start a mock interview. You are a tough senior interviewer. Ask the following question directly and wait for my answer. No framing — go straight in.`,
+    builder:`Present this question for Answer Builder mode. I will paste rough notes and you will rewrite them into a polished answer.`,
+  };
+  const reply=await callClaude(`${intro[G.mode]}\n\nQuestion: "${q}"`);
+  rmTyping(); lock(false);
+  if (reply) addMsg('ai',stripTags(reply));
+}
+
+function loadFollowUp(fq){
+  G.question=fq; G.msgs=[];
+  document.getElementById('qTitle').textContent=fq;
+  document.getElementById('qMeta').textContent='Follow-up Question';
+  addMsg('ai',`**Follow-up Question:**\n\n${fq}\n\nTake a moment to structure your answer, then type it below.`);
+  document.getElementById('ansBox').focus();
+}
+
+// ═══════════════════════════════════════════════
+// TEMPLATE MODAL
+// ═══════════════════════════════════════════════
+function showTemplate(type){
+  const t=TEMPLATES[type]; if (!t) return;
+  const steps=t.steps.map((s,i)=>`<li class="tmpl-step"><div class="tmpl-step-num">${i+1}</div><div><strong>${s.n}:</strong> ${s.d}</div></li>`).join('');
+  document.getElementById('tmplContent').innerHTML=`
+    <button class="modal-close" onclick="closeModal()">&#10005;</button>
+    <div class="modal-title">${t.name}</div>
+    <div class="modal-sub">${t.desc}</div>
+    <div class="tmpl-card"><div class="tmpl-name">Answer Framework</div><ul class="tmpl-steps">${steps}</ul></div>
+    <div class="tmpl-card" style="background:var(--pl);border-color:var(--pl2)">
+      <div class="tmpl-name" style="color:var(--purple)">&#128161; Example Opening</div>
+      <div style="font-size:12.5px;color:var(--text2);line-height:1.7;font-style:italic">${t.example}</div>
+    </div>
+    <button class="tmpl-use-btn" data-type="${type}" onclick="useTemplate(this.dataset.type)">Use This Structure in Answer Box</button>`;
+  document.getElementById('tmplModal').classList.remove('hidden');
+}
+
+function useTemplate(type){
+  const t=TEMPLATES[type];
+  const scaffold=t.steps.map(s=>`[${s.n}]: `).join('\n\n');
+  const box=document.getElementById('ansBox');
+  box.value=scaffold; autoH(box); closeModal(); box.focus();
+}
+
+function closeModal(e){
+  if (!e||e.target===document.getElementById('tmplModal'))
+    document.getElementById('tmplModal').classList.add('hidden');
+}
+
+// ═══════════════════════════════════════════════
+// UI HELPERS
+// ═══════════════════════════════════════════════
+function typeLabel(t){ return {behavioral:'Behavioral',strategy:'Product Strategy','ai-ml':'AI/ML Product',metrics:'Metrics & Data',leadership:'Leadership',tpm:'TPM Specific'}[t]||t; }
+function roleLabel(){ return {'sr-pm':'Senior PM',pm:'PM',tpm:'TPM','ai-pm':'AI PM'}[G.role]||G.role; }
+function compLabel(){ return {none:'Any Company',amazon:'Amazon',google:'Google',meta:'Meta'}[G.company]||G.company; }
+
+function setMode(val){
+  G.mode=val; G.msgs=[];
+  const p=document.getElementById('modePill');
+  p.className='mode-pill '+val;
+  p.textContent={practice:'Practice',mock:'Mock Interview',builder:'Answer Builder'}[val]||val;
+}
+
+function toggleStrict(){
+  G.strict=!G.strict;
+  document.getElementById('strictSw').classList.toggle('on',G.strict);
+  toast(G.strict?'&#128293; Strict Mode ON — expect brutal feedback':'Strict Mode OFF');
+}
+
+function toggleEye(){ const f=document.getElementById('apiKey'); f.type=f.type==='password'?'text':'password'; }
+
+function onKey(e){
+  if (e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); submitAnswer(); }
+  else setTimeout(()=>autoH(e.target),0);
+}
+
+function autoH(el){ el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,130)+'px'; }
+
+function toast(msg){ const t=document.getElementById('toast'); t.innerHTML=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2800); }
+
+// ═══════════════════════════════════════════════
+// SIDEBAR
+// ═══════════════════════════════════════════════
+function renderSidebar(){
+  document.getElementById('sbScroll').innerHTML=Object.entries(QB).map(([cat,qs])=>`
+    <div class="cat">
+      <div class="cat-hd" onclick="toggleCat(this)">
+        <span>${cat}<span class="cat-cnt">(${qs.length})</span></span>
+        <span class="cat-arrow">&#9654;</span>
+      </div>
+      <div class="cat-qs">
+        ${qs.map(item=>`<button class="qbtn" data-q="${esc(item.q)}" data-t="${item.t}" onclick="loadQ(this.dataset.q,this.dataset.t,this)">${item.q}</button>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function toggleCat(hd){
+  const qs=hd.nextElementSibling, was=qs.classList.contains('open');
+  document.querySelectorAll('.cat-qs').forEach(q=>q.classList.remove('open'));
+  document.querySelectorAll('.cat-hd').forEach(h=>h.classList.remove('open'));
+  if (!was){ qs.classList.add('open'); hd.classList.add('open'); }
+}
+
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
+renderSidebar();
+document.getElementById('ansBox').addEventListener('input',function(){ autoH(this); });
 </script>
 </body>
 </html>
